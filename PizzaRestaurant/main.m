@@ -45,7 +45,7 @@ int main(int argc, const char * argv[])
             }
             else
             {
-                NSLog(@"Kitchen chimps ate your pizza by accident");
+                NSLog(@"Kitchen chimps ate your pizza by accident!");
             }
             // And then send some message to the kitchen...
         }
