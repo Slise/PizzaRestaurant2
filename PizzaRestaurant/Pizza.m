@@ -31,21 +31,18 @@
         return PizzaSizeLarge;
 }
 
-+ (NSString*) sizeStringOutput: (PizzaSize) sizeEnum {
+-(NSString*) sizeStringOutput {
     
-    if (sizeEnum == 0){
+    if (self.size == PizzaSizeSmall){
         return @"small";
     }
-    else if (sizeEnum == 1) {
+    else if (self.size == PizzaSizeMedium) {
         return @"medium";
     }
     else
         return @"large";
 }
 
-//- (NSString *)description {
-//    return [NSString stringWithFormat:@"Making a: %@, with: %@", [Pizza sizeStringOutput:self.size] , self.toppings];
-//}
 
 
 @end

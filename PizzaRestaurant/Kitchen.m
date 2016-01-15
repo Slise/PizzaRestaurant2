@@ -12,8 +12,26 @@
 
 - (Pizza *)makePizzaWithSize:(PizzaSize)size toppings:(NSArray *)toppings {
     
-        Pizza *newOrder = [[Pizza alloc]initWithSize:size toppings:toppings];
-        return newOrder;
+    Pizza *newOrder = 0;
+    
+    if (!self.delegate){
+        NSLog(@"No manager is on duty!");
+        newOrder = [[Pizza alloc]initWithSize:size toppings:toppings];
+    } else {
+        if ([self.delegate kitchen:self shouldMakePizzaOfSize:size andToppings:toppings]) {
+            
+            PizzaSize targetSize = size;
+            
+            if ([self.delegate kitchenShouldUpgradeOrder:self]) {
+                targetSize = PizzaSizeLarge;
+            }
+            newOrder = [[Pizza alloc]initWithSize:targetSize toppings:toppings];
+            
+            if ([self.delegate respondsToSelector:@selector(kitchenDidMakePizza:)]) {
+                [self.delegate kitchenDidMakePizza:newOrder];
+            }
+        }
+    }
+    return newOrder;
 }
-
 @end

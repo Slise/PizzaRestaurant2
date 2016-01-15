@@ -20,6 +20,6 @@ typedef enum {
 - (instancetype)initWithSize:(PizzaSize)size toppings:(NSArray *)toppings;
 
 + (PizzaSize) sizeSelector: (NSString*) sizeString;
-+ (NSString*) sizeStringOutput: (PizzaSize) sizeEnum;
+- (NSString*) sizeStringOutput;
 
 @end
